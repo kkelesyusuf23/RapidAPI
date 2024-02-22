@@ -1,0 +1,30 @@
+﻿@model List<SearchLocationViewModel>
+@{
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <h3>
+        <a href="javascript:void();"><i class="zmdi zmdi-shape"></i> <span> Booking com - Otel Arama</span></a>
+    </h3>
+    <br />
+    @using (Html.BeginForm("Index", "SearchLocation", FormMethod.Post))
+    {
+        <label>Şehir Adını Giriniz</label>
+        <input type="text" class="form-control" name="city"/>
+        <br />
+        <button class="btn btn-dark">Şehir Destinasyon ID Getir</button>
+    }
+    <br />
+    <table class="table table-hover">
+        @foreach(var item in Model)
+        {
+            <tr>
+                <th>@item.dest_id</th>
+            </tr>
+        }
+    </table>
+    <br />
+</div>

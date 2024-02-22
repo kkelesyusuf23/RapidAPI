@@ -1,0 +1,39 @@
+﻿@model WeatherViewModel
+
+@{
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <h3>
+        <a href="javascript:void();"><i class="zmdi zmdi-soundcloud"></i> <span> Hava Durumu</span></a>
+    </h3>
+    <br />
+    @using (Html.BeginForm("Index", "Weather", FormMethod.Post))
+    {
+        <label>Şehir Adını Giriniz</label>
+        <input type="text" class="form-control" name="city" />
+        <br />
+        <button class="btn btn-dark">Hava Durum Bilgisini Getir</button>
+    }
+    <br />
+    <table class="table table-hover">
+        <tr>
+
+            <th>Şehir</th>
+            <th>Sıcaklık</th>
+            <th>Durum</th>
+            <th>Nemlilik Oranı</th>
+
+        </tr>
+        <tr>
+            <td>@Model.location.city</td>
+            <td>@Model.current_observation.condition.temperature C</td>
+            <td>@Model.current_observation.condition.text</td>
+            <td>@Model.current_observation.atmosphere.humidity</td>
+        </tr>
+    </table>
+    <br />
+</div>

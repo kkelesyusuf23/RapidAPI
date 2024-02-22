@@ -1,0 +1,33 @@
+﻿@model List<ExchangeViewModel.Exchange_Rates>
+@{
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<style>
+    ::-webkit-scrollbar {
+        background-color: transparent;
+    }
+</style>
+<div class="container">
+    <br />
+    <h2>
+        <a href="javascript:void();"><i class="zmdi zmdi-balance"></i> <span> Döviz Kurları - USD</span></a>
+        
+    </h2>
+    <br />
+    <div style="height: 530px; overflow-x: hidden; overflow-y: scroll;">
+        <table class="table table-hover">
+            <tr>
+                <td>Döviz</td>
+                <td>Kur</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.currency</td>
+                    <td>@item.exchange_rate_buy</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

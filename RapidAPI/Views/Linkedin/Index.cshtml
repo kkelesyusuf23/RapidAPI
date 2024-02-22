@@ -1,0 +1,46 @@
+﻿@model LinkedinViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Layout/Index.cshtml";
+}
+
+<div class="container" >
+    <br />
+    <h3>
+        <a href="javascript:void();"><i class="zmdi zmdi-linkedin"></i> <span> LinkedIn Profil</span></a>
+    </h3>
+    <br />
+    @using (Html.BeginForm("Index", "Linkedin", FormMethod.Post))
+    {
+        <label>Kullanıcı Adını Giriniz</label>
+        <input type="text" class="form-control" name="username" />
+        <br />
+        <button class="btn btn-dark">Profili Getir</button>
+    }
+    <br />
+    <table class="table table-hover" >
+        <tr>
+            <th>Ad Soyad</th>
+            <th>Ülke/Şehir</th>
+            <th>Pozisyonlar</th>
+            <th>Yetenekler</th>
+        </tr>
+        <tr>
+            <th>@Model.firstName @Model.lastName</th>
+            <th>@Model.geo.full</th>
+            <th>
+                @foreach (var item in @Model.position)
+                {
+                    <p>@item.title</p>
+                }
+            </th>
+            <th>
+                @foreach (var item in @Model.skills)
+                {
+                    <p>@item.name</p>
+                }
+            </th>
+        </tr>
+    </table>
+    <br />
+</div>
